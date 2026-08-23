@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+
+#========================================================
+# Description: Install and configure Nginx on an Amazon Linux EC2 instance.
+# Author: Abdulmalik Ibikunle
+# Date: 2026-06-20
+# Version: 1.0.0
+#========================================================
+
+# Update system and install nginx
+sudo yum update -y
+sudo amazon-linux-extras install nginx1
+
+# Enable and start nginx
+sudo systemctl enable --now nginx
+
+# Create a simple HTML page
+sudo tee /usr/share/nginx/html/index.html > /dev/null <<EOF
+<!DOCTYPE html>
+<html>
+<head>
+<title>${project_name} - Week 1</title>
+</head>
+<body>
+<h1>${project_name} - Week 1</h1>
+<h2>${full_name}</h2>
+</body>
+</html>
+EOF
