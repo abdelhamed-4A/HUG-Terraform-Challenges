@@ -4,7 +4,7 @@
   * It leverages modules for better organization and reusability of code.
   */
 
-# VPC Configuration 
+# VPC Configuration
 module "vpc" {
   source = "../modules/vpc"
 

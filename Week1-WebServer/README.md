@@ -4,14 +4,20 @@ This Terraform project creates a VPC, public subnet, security group, and Amazon 
 
 ## Table of Contents
 
-- [Architecture](#architecture)
-- [Prerequisites](#prerequisites)
-- [Deploy](#deploy)
-- [Destroy Resources](#destroy-resources)
-- [Configuration](#configuration)
-- [Troubleshooting](#troubleshooting)
-- [Security](#security)
-- [Screenshots](#screenshots)
+- [HUG Terraform Week 1 — AWS Web Server](#hug-terraform-week-1--aws-web-server)
+  - [Table of Contents](#table-of-contents)
+  - [Architecture](#architecture)
+  - [Prerequisites](#prerequisites)
+  - [Deploy](#deploy)
+  - [Destroy Resources](#destroy-resources)
+  - [Configuration](#configuration)
+  - [Troubleshooting](#troubleshooting)
+  - [Security](#security)
+  - [Screenshots](#screenshots)
+    - [VPC](#vpc)
+    - [EC2 Instance](#ec2-instance)
+    - [Inbound Rules](#inbound-rules)
+    - [Web Page](#web-page)
 
 ## Architecture
 
@@ -26,7 +32,7 @@ The EC2 startup script installs Nginx and creates a page showing the project nam
 ## Prerequisites
 
 - AWS account, AWS CLI, and Terraform 1.5+
-- Existing S3 bucket: `hug-terraform-bucket` in `us-east-1`
+- Existing S3 bucket: `hug-terraform-bucket-state` in `us-east-1`
 
 > **Note:** The bucket stores Terraform state and must exist before initialization.
 
@@ -96,28 +102,22 @@ Never commit AWS keys, Terraform state, or secrets. Use least-privilege IAM perm
 
 The VPC created by Terraform in the AWS console.
 
-![Created VPC](images/vpc.png)
+![Created VPC](screenshots/vpc.png)
 
 ### EC2 Instance
 
 The Amazon Linux EC2 instance running the web server.
 
-![EC2 instance](images/instance.png)
+![EC2 instance](screenshots/instance.png)
 
 ### Inbound Rules
 
 Security group rules allowing the configured inbound ports.
 
-![Inbound security rules](images/inbound-rule.png)
-
-### Outbound Rules
-
-The security group outbound rule allowing internet access.
-
-![Outbound security rules](images/outbound-rule.png)
+![Inbound security rules](screenshots/inbound-rule.png)
 
 ### Web Page
 
 The Nginx web page displayed in a browser after deployment.
 
-![Deployed web page](images/webpage.png)
+![Deployed web page](screenshots/webpage.png)
