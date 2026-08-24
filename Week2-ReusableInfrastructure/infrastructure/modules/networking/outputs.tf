@@ -1,0 +1,19 @@
+output "internet_gateway_id" {
+  description = "Internet gateway ID"
+  value       = aws_internet_gateway.this.id
+}
+
+output "public_subnet_ids" {
+  description = "Public subnet IDs"
+  value       = [for subnet in aws_subnet.public : subnet.id]
+}
+
+output "private_subnet_ids" {
+  description = "Private subnet IDs"
+  value       = [for subnet in aws_subnet.private : subnet.id]
+}
+
+output "nat_gateway_ids" {
+  description = "NAT gateway IDs"
+  value       = [for nat in aws_nat_gateway.this : nat.id]
+}
