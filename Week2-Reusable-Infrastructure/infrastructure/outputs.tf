@@ -9,9 +9,9 @@ output "vpc" {
 output "networking" {
   description = "Networking resources"
   value = {
-    public_subnet_ids  = module.networking.public_subnet_ids
-    private_subnet_ids = module.networking.private_subnet_ids
-    nat_gateway_ids    = module.networking.nat_gateway_ids
+    public_subnet_ids   = module.networking.public_subnet_ids
+    private_subnet_ids  = module.networking.private_subnet_ids
+    nat_gateway_ids     = module.networking.nat_gateway_ids
     internet_gateway_id = module.networking.internet_gateway_id
   }
 }
@@ -24,18 +24,31 @@ output "security_group_ids" {
 output "compute" {
   description = "Compute resource details"
   value = {
-    instance_ids         = module.compute.instance_ids
-    instance_public_ips  = module.compute.public_ips
-    instance_public_dns  = module.compute.public_dns
-    launch_template_id   = module.compute.launch_template_id
+    instance_ids       = module.compute.instance_ids
+    instance_public_ips = module.compute.public_ips
+    instance_public_dns = module.compute.public_dns
+    launch_template_id  = module.compute.launch_template_id
   }
 }
 
 output "load_balancer" {
   description = "Load balancer details"
+  value = var.enable_alb ? {
+    arn              = module.alb[0].lb_arn
+    dns_name         = module.alb[0].lb_dns_name
+    target_group_arn = module.alb[0].target_group_arn
+  } : null
+}
+
+output "webpage_url" {
+  description = "URL to access the deployed webpage"
+  value       = var.enable_alb ? "http://${module.alb[0].lb_dns_name}" : "http://${module.compute.public_ips[0]}"
+}
+
+output "terraform_state" {
+  description = "Terraform state configuration"
   value = {
-    arn         = module.alb.lb_arn
-    dns_name    = module.alb.lb_dns_name
-    target_group_arn = module.alb.target_group_arn
+    bucket = "hug-terraform-bucket-state"
+    key    = "week-2/terraform.tfstate"
   }
 }

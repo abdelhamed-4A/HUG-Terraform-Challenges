@@ -7,6 +7,7 @@ variable "aws_region" {
 variable "project_name" {
   description = "Project name prefix for resources"
   type        = string
+  default     = "HUG-Terraform-Challenge-Week2"
 }
 
 variable "environment" {
@@ -18,6 +19,7 @@ variable "environment" {
 variable "vpc_cidr" {
   description = "CIDR block for VPC"
   type        = string
+  default     = "10.0.0.0/16"
 }
 
 variable "enable_dns_support" {
@@ -35,16 +37,19 @@ variable "enable_dns_hostnames" {
 variable "availability_zones" {
   description = "Availability zones used for subnets"
   type        = list(string)
+  default     = ["us-east-1a", "us-east-1b"]
 }
 
 variable "public_subnet_cidrs" {
   description = "Public subnet CIDR blocks"
   type        = list(string)
+  default     = ["10.0.1.0/24", "10.0.2.0/24"]
 }
 
 variable "private_subnet_cidrs" {
   description = "Private subnet CIDR blocks"
   type        = list(string)
+  default     = ["10.0.11.0/24", "10.0.12.0/24"]
 }
 
 variable "enable_nat_gateway" {
@@ -59,25 +64,10 @@ variable "single_nat_gateway" {
   default     = true
 }
 
-variable "security_groups" {
-  description = "Security group definitions keyed by group name"
-  type = map(object({
-    description = string
-    ingress_rules = list(object({
-      description = string
-      from_port   = number
-      to_port     = number
-      protocol    = string
-      cidr_blocks = list(string)
-    }))
-    egress_rules = list(object({
-      description = string
-      from_port   = number
-      to_port     = number
-      protocol    = string
-      cidr_blocks = list(string)
-    }))
-  }))
+variable "ingress_ports" {
+  description = "List of ingress ports to allow"
+  type        = list(number)
+  default     = [22, 80, 443]
 }
 
 variable "instance_type" {
@@ -101,6 +91,7 @@ variable "key_name" {
 variable "full_name" {
   description = "Full name shown on web page"
   type        = string
+  default     = "Abdel-Hamed Abdel-Nasser"
 }
 
 variable "enable_alb" {

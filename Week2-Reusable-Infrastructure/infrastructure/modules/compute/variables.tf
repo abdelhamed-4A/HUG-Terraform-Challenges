@@ -41,11 +41,6 @@ variable "full_name" {
   type        = string
 }
 
-variable "user_data_template_path" {
-  description = "Absolute path to user-data template"
-  type        = string
-}
-
 variable "tags" {
   description = "Common tags"
   type        = map(string)

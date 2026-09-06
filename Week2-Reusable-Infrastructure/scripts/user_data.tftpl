@@ -1,18 +1,90 @@
-#!/usr/bin/env bash
-sudo yum update -y
-sudo amazon-linux-extras install nginx1 -y
-sudo systemctl enable --now nginx
+#!/bin/bash
+set -e
 
-sudo tee /usr/share/nginx/html/index.html > /dev/null <<HTML
+# Update system
+yum update -y
+
+# Install Nginx
+amazon-linux-extras install -y nginx1
+
+# Start and enable Nginx
+systemctl start nginx
+systemctl enable nginx
+
+# Create HTML page
+cat > /usr/share/nginx/html/index.html <<HTML
 <!DOCTYPE html>
 <html>
 <head>
-  <title>${project_name} - Week 2 (${environment})</title>
+    <title>HUG Terraform Challenge - Week 2</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .container {
+            background: white;
+            border-radius: 10px;
+            padding: 40px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            text-align: center;
+            max-width: 600px;
+        }
+        h1 {
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+        .name {
+            font-size: 24px;
+            color: #764ba2;
+            margin: 20px 0;
+            font-weight: bold;
+        }
+        .project {
+            font-size: 18px;
+            color: #555;
+            margin: 20px 0;
+        }
+        .instance-info {
+            background: #f0f0f0;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 20px 0;
+            font-size: 14px;
+        }
+        .status {
+            color: #4CAF50;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+    </style>
 </head>
 <body>
-  <h1>${project_name} - Week 2</h1>
-  <h2>${full_name}</h2>
-  <p>Environment: ${environment}</p>
+    <div class="container">
+        <h1>HUG Lagos/Ibadan Terraform Challenge</h1>
+        <h2>Week 2: Reusable Infrastructure</h2>
+        <div class="name">${full_name}</div>
+        <div class="project">${project_name}</div>
+        <div class="instance-info">
+            <p><strong>Environment:</strong> ${environment}</p>
+            <p><strong>Timestamp:</strong> <span id="timestamp"></span></p>
+        </div>
+        <div class="status">✓ Infrastructure deployed successfully with Terraform</div>
+    </div>
+    <script>
+        document.getElementById('timestamp').textContent = new Date().toLocaleString();
+    </script>
 </body>
 </html>
 HTML
+
+# Restart Nginx to apply changes
+systemctl restart nginx
+
+echo "User data script completed successfully"
