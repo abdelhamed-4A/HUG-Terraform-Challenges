@@ -1,0 +1,23 @@
+# Terraform working directory and state
+**/.terraform/
+**/terraform.tfstate
+**/terraform.tfstate.*
+**/.terraform.tfstate.lock.info
+
+# Terraform plans and crash logs
+*.tfplan
+*.tfplan.json
+crash.log
+crash.*.log
+
+# Local variable values; keep committed examples and environment configs
+**/infrastructure/terraform.tfvars
+*.auto.tfvars
+*.auto.tfvars.json
+
+# Credentials and local environment files
+.env
+.env.*
+*.pem
+*.key
+credentials/
