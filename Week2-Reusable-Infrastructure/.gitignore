@@ -1,9 +1,8 @@
 # Terraform working directory and state
 **/.terraform/
+**/.terraform*
 **/terraform.tfstate
 **/terraform.tfstate*
-**/.terraform.lock.hcl
-**/.terraform
 **/terraform.tfstate.*
 **/.terraform.tfstate.lock.info
 
@@ -13,8 +12,11 @@
 crash.log
 crash.*.log
 
-# Local variable values; keep committed examples and environment configs
+# Terraform dependency lock file
+**/.terraform.lock.hcl
+
+# Local variable values
 **/infrastructure/terraform.tfvars
+**/infrastructure/.terraform.lock.hcl
 *.auto.tfvars
 *.auto.tfvars.json
-
