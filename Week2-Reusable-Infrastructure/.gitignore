@@ -1,6 +1,9 @@
 # Terraform working directory and state
 **/.terraform/
 **/terraform.tfstate
+**/terraform.tfstate*
+**/.terraform.lock.hcl
+**/.terraform
 **/terraform.tfstate.*
 **/.terraform.tfstate.lock.info
 
@@ -15,9 +18,3 @@ crash.*.log
 *.auto.tfvars
 *.auto.tfvars.json
 
-# Credentials and local environment files
-.env
-.env.*
-*.pem
-*.key
-credentials/
