@@ -18,17 +18,17 @@ HUG-Terraform-Challenges/
 
 ## 🚀 Projects Summary
 
-### [Week 1: Automated Web Server Deployment](https://www.google.com/search?q=Week1-WebServer&utm_source=gemini)
+### [Week 1: Automated Web Server Deployment](https://github.com/abdelhamed-4A/HUG-Terraform-Challenges/tree/main/Week1-WebServer)
 
 * **Goal**: Provision an Amazon EC2 instance running Nginx inside a default VPC using Terraform.
 * **Key Features**: Bootstrapped web server via `user_data`, security group configuration for HTTP/SSH, and S3 remote backend state management.
 
-### [Week 2: Reusable & Modular Infrastructure](https://www.google.com/search?q=Week2-Reusable-Infrastructure&utm_source=gemini)
+### [Week 2: Reusable & Modular Infrastructure](https://github.com/abdelhamed-4A/HUG-Terraform-Challenges/tree/main/Week2-Reusable-Infrastructure)
 
 * **Goal**: Refactor infrastructure into reusable, single-responsibility modules supporting multiple environments (`dev`, `staging`, `prod`).
 * **Key Features**: Modular VPC, multi-AZ public/private subnets, Security Group chaining, Application Load Balancer (ALB), EC2 Launch Templates, and native S3 state locking (`use_lockfile = true`).
 
-### [Week 3: Two-Tier Cloud Application](https://www.google.com/search?q=Week3-Two-Tier-Application&utm_source=gemini)
+### [Week 3: Two-Tier Cloud Application](https://github.com/abdelhamed-4A/HUG-Terraform-Challenges/tree/main/Week3-Two-Tier-Application)
 
 * **Goal**: Deploy a secure, production-grade two-tier application decoupling compute from database workloads.
 * **Key Features**: Public EC2 compute tier (Nginx), private Amazon RDS PostgreSQL database tier, Multi-AZ DB Subnet Group, NAT Gateway for outbound connectivity, and strict least-privilege security group chaining.
