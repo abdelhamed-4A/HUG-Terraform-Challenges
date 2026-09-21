@@ -1,4 +1,3 @@
-"Week3-Two-Tier-Application/infrastructure/terraform.tfvars" 
 # Terraform working directories and state files
 **/.terraform/
 **/.terraform*
@@ -33,3 +32,4 @@ crash.*.log
 Thumbs.db
 .idea/
 .vscode/
+.gitignore
