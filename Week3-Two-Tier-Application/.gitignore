@@ -5,13 +5,7 @@
 **/terraform.tfstate*
 **/terraform.tfstate.*
 **/.terraform.tfstate.lock.info
-**/.terraform.tfvars
 
-# Terraform plans and crash logs
-*.tfplan
-*.tfplan.json
-crash.log
-crash.*.log
 
 # Local variable values and sensitive credentials
 **/*.tfvars
@@ -19,3 +13,16 @@ crash.*.log
 **/*.tfvars.json
 *.auto.tfvars
 *.auto.tfvars.json
+
+# Explicit path targeting the infrastructure tfvars
+infrastructure/terraform.tfvars
+
+# SSH keys and local secrets
+*.pem
+*.id_rsa
+*.pub
+
+# OS and IDE specific files
+.DS_Store
+.idea/
+.vscode/
