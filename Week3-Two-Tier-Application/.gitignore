@@ -5,6 +5,7 @@
 **/terraform.tfstate*
 **/terraform.tfstate.*
 **/.terraform.tfstate.lock.info
+**/.terraform.tfvars
 
 # Terraform plans and crash logs
 *.tfplan
